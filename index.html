@@ -4,56 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Ledger of Visions | Realm Pictures</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css"> 
-</head>
-<body class="vault-body">
-    <div class="candle-container left">
-        <div class="flame"></div>
-        <div class="candle"></div>
-    </div>
-    <div class="candle-container right">
-        <div class="flame"></div>
-        <div class="candle"></div>
-    </div>
+    <link rel="stylesheet" href="style.css"> </head>
+<body class="cover-page">
+    <div class="overlay"></div>
+    <main class="container">
+        <header>
+            <p class="branding">SOLOMON KIN RECORDS, LLC MEDIA GROUP PRESENTS</p>
+            <h1 class="main-title">THE LEDGER OF VISIONS</h1>
+            <p class="sub-title">REALM PICTURES: MOVIE TREATMENTS ARCHIVE [VOL 1]</p>
+        </header>
 
-    <main class="scene">
-        <p class="branding">SOLOMON KIN RECORDS, LLC MEDIA GROUP PRESENTS</p>
-        
-        <div class="book-wrap" onclick="handleBookOpen()">
-            <div class="book" id="mainBook">
-                <div class="cover">
-                    <div class="cover-content">
-                        <h1 class="main-title">THE LEDGER OF VISIONS</h1>
-                        <hr>
-                        <p class="sub-title">REALM PICTURES:<br>MOVIE TREATMENTS ARCHIVE [VOL 1]</p>
-                        <div class="seal">EST. 2026</div>
-                    </div>
-                </div>
-                <div class="page">
-                    <div class="page-content">
-                        <h2>OPENING...</h2>
-                        <p class="page-text">"The truth is a mirror..."</p>
-                    </div>
-                </div>
+        <section class="entry-point">
+            <div class="seal">
+                <p>EST. 2026</p>
             </div>
-        </div>
+            <a href="treatment-01.html" class="enter-btn">OPEN THE LEDGER</a>
+        </section>
 
         <footer>
             <p>© 2026 NEHEMIAH MMM BROWN INC. | PHILADELPHIA MEDIA GROUP</p>
         </footer>
     </main>
-
-    <script>
-        function handleBookOpen() {
-            const book = document.getElementById('mainBook');
-            book.classList.add('open');
-            
-            // Redirects to the treatment after the animation finishes
-            setTimeout(() => {
-                window.location.href = "treatment-01.html";
-            }, 1800);
-        }
-    </script>
 </body>
 </html>
