@@ -1,106 +1,155 @@
-/* General Atmosphere */
-body.vault-body {
-    background: radial-gradient(circle, #1a0f00 0%, #000000 100%);
-    color: #d4af37; /* Gold tone */
-    font-family: 'Cinzel', serif;
-    height: 100vh;
+/* --- THE SOVEREIGN LEDGER CORE STYLES --- */
+
+:root {
+    --bg-color: #0a0a0a;
+    --text-primary: #f5f5f5;
+    --text-secondary: #a0a0a0;
+    --accent: #d4af37; /* Cinematic Gold */
+    --border-color: rgba(255, 255, 255, 0.1);
+    --font-header: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --font-script: 'Courier Prime', 'Courier', monospace;
+}
+
+* {
     margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    perspective: 2000px;
-    overflow: hidden;
-}
-
-/* Candle Special Effects */
-.candle-container {
-    position: absolute;
-    bottom: 10%;
-}
-.left { left: 10%; }
-.right { right: 10%; }
-
-.flame {
-    width: 15px;
-    height: 30px;
-    background: #ffae00;
-    border-radius: 50% 50% 20% 20%;
-    filter: blur(1px);
-    box-shadow: 0 0 40px 10px rgba(255, 174, 0, 0.4);
-    animation: flicker 0.1s infinite alternate;
-}
-
-.candle {
-    width: 30px;
-    height: 150px;
-    background: #e0e0e0;
-    border-radius: 5px;
-}
-
-@keyframes flicker {
-    0% { transform: scale(1) rotate(-1deg); opacity: 0.8; }
-    100% { transform: scale(1.1) rotate(1deg); opacity: 1; }
-}
-
-/* The Book Construction */
-.book-wrap {
-    cursor: pointer;
-    width: 400px;
-    height: 550px;
-    transition: transform 0.5s;
-}
-
-.book-wrap:hover {
-    transform: translateY(-10px) rotateX(10deg);
-}
-
-.book {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    transition: transform 1.5s cubic-bezier(0.645, 0.045, 0.355, 1);
-}
-
-.cover, .page {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    backface-visibility: hidden;
-    border-radius: 5px 15px 15px 5px;
-    box-shadow: 10px 10px 50px rgba(0,0,0,0.8);
-}
-
-.cover {
-    background: #4a0404; /* Deep Blood Red/Leather */
-    border: 5px solid #2a0202;
-    z-index: 2;
-    transform-origin: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
+    padding: 0;
     box-sizing: border-box;
 }
 
-.page {
-    background: #fdf5e6; /* Old Paper */
-    z-index: 1;
-    color: #1a0f00;
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-header);
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png'); /* Subtle texture */
+}
+
+/* --- NAVIGATION --- */
+.top-nav {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    padding: 20px 40px;
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.nav-right a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+/* --- THE STAGE (Fixed Content) --- */
+.treatment-header {
+    text-align: center;
+    padding: 60px 20px 20px;
+}
+
+.movie-title {
+    font-size: 4rem;
+    font-weight: 800;
+    letter-spacing: -2px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.logline {
+    font-style: italic;
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto 30px;
+    font-size: 1.2rem;
+}
+
+.video-container {
+    width: 80%;
+    max-width: 900px;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    margin: 0 auto 50px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    display: flex;
     align-items: center;
-    font-family: 'Playfair Display', serif;
+    justify-content: center;
+    position: relative;
 }
 
-/* Opening Animation */
-.book.open {
-    transform: rotateY(-180deg);
+/* --- THE MANUSCRIPT (Scrolling Content) --- */
+.full-text {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
 }
 
-.branding { font-size: 0.7rem; letter-spacing: 3px; position: absolute; top: -100px; width: 100%; text-align: center; }
-footer { position: absolute; bottom: -100px; width: 100%; text-align: center; font-size: 0.6rem; opacity: 0.5; }
+.manuscript-area {
+    font-family: var(--font-script);
+    font-size: 1.1rem;
+    white-space: pre-line; /* Keeps your script formatting intact */
+}
+
+/* --- INTERACTION (Comment Ledger) --- */
+.interaction-area {
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 40px;
+    border-top: 1px solid var(--accent);
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: white;
+    padding: 15px;
+    margin-top: 20px;
+    font-family: inherit;
+}
+
+.submit-btn {
+    background: var(--accent);
+    color: black;
+    border: none;
+    padding: 10px 25px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.submit-btn:hover {
+    background: white;
+}
+
+/* --- NEXT CHAPTER BUTTONS --- */
+.bottom-nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 60px 40px;
+    background: linear-gradient(to top, #000, transparent);
+}
+
+.nav-btn {
+    text-decoration: none;
+    color: var(--text-primary);
+    border: 1px solid var(--text-primary);
+    padding: 15px 30px;
+    transition: 0.4s;
+}
+
+.nav-btn:hover {
+    background: var(--text-primary);
+    color: black;
+}
