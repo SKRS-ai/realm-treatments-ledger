@@ -8,19 +8,14 @@
     --border-color: rgba(255, 255, 255, 0.1);
     --font-header: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     --font-script: 'Courier Prime', 'Courier', monospace;
-    --glass-bg: rgba(10, 10, 10, 0.9);
-    --shadow-deep: 0 40px 80px rgba(0, 0, 0, 0.9);
+    --glass-bg: rgba(10, 10, 10, 0.95);
 }
 
-/* --- 1. GLOBAL RESET & BASE --- */
+/* --- 1. GLOBAL RESET & LAYOUT --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
 }
 
 body {
@@ -29,272 +24,153 @@ body {
     font-family: var(--font-header);
     line-height: 1.6;
     overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
 }
 
-/* --- 2. UNIFIED NAVIGATION --- */
+/* --- 2. FIXED NAVIGATION (FIXED TOP ALIGNMENT) --- */
 .top-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 50px;
+    padding: 0 5%; /* Side padding for alignment */
+    height: 70px;
     background: var(--glass-bg);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(15px);
     border-bottom: 1px solid var(--border-color);
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 2000;
-    transition: background 0.4s ease;
-}
-
-.brand-logo {
-    height: 60px;
-    width: auto;
-    filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.brand-logo:hover {
-    transform: scale(1.1) rotate(-2deg);
-}
-
-.user-access {
-    display: flex;
-    align-items: center;
-    gap: 25px;
-}
-
-.access-link {
-    color: var(--text-primary);
-    text-decoration: none;
-    font-weight: 700;
-    letter-spacing: 2px;
     font-size: 0.75rem;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    transition: 0.3s;
 }
 
-.access-link:hover {
-    color: var(--accent);
+.nav-left, .nav-center, .nav-right {
+    flex: 1;
 }
 
-/* THE GROWTH BUTTON ENHANCEMENT */
-.join-highlight, .enter-btn, .submit-btn, .submit-auth, .nav-btn {
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
+.nav-center { text-align: center; font-weight: bold; }
+.nav-right { text-align: right; }
+.nav-right a { color: var(--accent); text-decoration: none; }
 
-.join-highlight {
-    color: var(--accent);
-    border: 1px solid var(--accent);
-    padding: 10px 25px;
-    text-decoration: none;
-}
-
-.join-highlight:hover, .enter-btn:hover {
-    transform: scale(1.1); /* Growth Effect */
-    background: var(--accent);
-    color: #000;
-    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
-}
-
-/* --- 3. COVER PAGE (INDEX.HTML) --- */
-.cover-page {
-    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), 
-                url('ledger-visions-background.png') no-repeat center center fixed;
-    background-size: cover;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 80px;
-}
-
-.cover-page .container {
-    background: rgba(0, 0, 0, 0.75);
-    padding: 5rem 4rem;
-    border: 1px solid var(--accent);
-    backdrop-filter: blur(15px);
-    text-align: center;
-    max-width: 900px;
-    box-shadow: var(--shadow-deep);
-}
-
-.main-title {
-    font-size: 4.5rem;
-    font-weight: 900;
-    letter-spacing: 5px;
-    margin-bottom: 15px;
-    line-height: 1.1;
-}
-
-/* --- 4. TREATMENT PAGE ARCHITECTURE --- */
+/* --- 3. TREATMENT PAGE WRAPPER --- */
 .treatment-page {
-    background: radial-gradient(circle at top, #151515, #000);
-    padding-top: 120px; /* Space for fixed nav */
+    padding-top: 100px; /* Prevents header overlap */
+    background: radial-gradient(circle at top, #111, #000);
 }
 
 .content-wrapper {
-    max-width: 1200px;
+    max-width: 1100px; /* Prevents text from stretching too wide */
     margin: 0 auto;
     padding: 0 20px;
 }
 
+/* --- 4. HEADER & POSTER ALIGNMENT --- */
 .treatment-header {
-    text-align: center;
-    margin-bottom: 60px;
+    text-align: left; /* Aligns with the poster */
+    margin-bottom: 40px;
 }
 
 .movie-title {
-    font-size: 5rem;
+    font-size: 3.5rem;
     font-weight: 900;
-    color: var(--accent);
     text-transform: uppercase;
-    letter-spacing: -3px;
-    line-height: 0.9;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .logline {
-    font-size: 1.4rem;
+    font-size: 1.1rem;
     color: var(--text-secondary);
-    font-style: italic;
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 900px;
 }
 
-/* POSTER & VIDEO CONTAINERS */
 .poster-container {
-    max-width: 650px;
-    margin: 0 auto 50px;
+    width: 100%;
+    max-width: 700px;
+    margin: 40px 0; /* Keep it left-aligned or center with auto */
     border: 1px solid var(--accent);
     padding: 10px;
     background: #000;
-    box-shadow: var(--shadow-deep);
 }
 
 .poster-container img {
     width: 100%;
-    height: auto;
     display: block;
 }
 
-.video-container {
-    width: 100%;
-    max-width: 1000px;
-    aspect-ratio: 16/9;
-    background: #050505;
-    margin: 0 auto 80px;
-    border: 1px solid var(--border-color);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    box-shadow: var(--shadow-deep);
-}
-
-/* MANUSCRIPT STYLING */
+/* --- 5. TEXT & MANUSCRIPT --- */
 .full-text {
+    margin: 60px 0;
     background: rgba(255, 255, 255, 0.02);
-    border: 1px solid var(--border-color);
-    padding: 80px;
-    margin-bottom: 80px;
-    position: relative;
-}
-
-.full-text h2 {
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    font-size: 0.9rem;
-    margin-bottom: 40px;
-    border-bottom: 1px solid var(--accent);
-    display: inline-block;
+    border-left: 3px solid var(--accent);
+    padding: 40px;
 }
 
 .manuscript-area {
     font-family: var(--font-script);
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     color: #ccc;
     white-space: pre-line;
 }
 
-/* --- 5. INTERACTIVE ELEMENTS --- */
+/* --- 6. INTERACTION (FIXED BUTTONS) --- */
 .interaction-area {
-    border-top: 1px solid var(--accent);
-    padding: 60px 0;
+    margin-top: 60px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 40px;
 }
 
 textarea {
     width: 100%;
-    min-height: 150px;
-    background: #000;
+    height: 100px;
+    background: #111;
     border: 1px solid var(--border-color);
-    color: #fff;
-    padding: 20px;
+    color: white;
+    padding: 15px;
+    margin: 15px 0;
     font-family: inherit;
-    margin: 20px 0;
 }
 
+/* CINEMATIC LOG BUTTON */
 .submit-btn {
     background: var(--accent);
-    color: #000;
+    color: black;
     border: none;
-    padding: 15px 40px;
-    font-weight: 800;
-    cursor: pointer;
+    padding: 12px 30px;
+    font-weight: bold;
     text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-/* --- 6. AUTH MODALS & OVERLAYS --- */
-.modal-overlay {
-    display: none;
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.95);
-    backdrop-filter: blur(20px);
-    z-index: 3000;
-    justify-content: center;
-    align-items: center;
+.submit-btn:hover {
+    background: white;
+    transform: translateY(-2px);
 }
 
-.modal-content {
-    background: #0a0a0a;
-    border: 1px solid var(--accent);
-    padding: 60px;
-    max-width: 500px;
-    width: 90%;
-    text-align: center;
-}
-
-/* --- 7. NAVIGATION FOOTER --- */
+/* --- 7. BOTTOM NAVIGATION (FIXED ALIGNMENT) --- */
 .bottom-nav {
     display: flex;
     justify-content: space-between;
-    padding: 100px 50px;
-    background: linear-gradient(to top, #000, transparent);
+    align-items: center;
+    padding: 60px 0;
+    margin-bottom: 100px;
+    border-top: 1px solid var(--border-color);
 }
 
 .nav-btn {
     text-decoration: none;
-    color: #fff;
-    border: 1px solid var(--border-color);
-    padding: 20px 40px;
+    color: var(--text-primary);
+    border: 1px solid var(--accent);
+    padding: 12px 25px;
     font-size: 0.8rem;
+    font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    transition: 0.3s;
 }
 
 .nav-btn:hover {
-    transform: translateY(-5px); /* Lift Effect */
-    border-color: var(--accent);
-}
-
-/* STATUS OVERLAYS (GLITCH STYLE) */
-.status-overlay {
-    color: var(--accent);
-    font-family: var(--font-script);
-    font-size: 0.7rem;
-    letter-spacing: 3px;
-    margin-bottom: 10px;
+    background: var(--accent);
+    color: black;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
 }
