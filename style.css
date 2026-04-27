@@ -1,5 +1,3 @@
-/* --- THE SOVEREIGN LEDGER CORE STYLES (Update) --- */
-.cover-page {
     /* Standard background for the whole site as seen in Image 1 */
     background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
     color: var(--text-primary);
