@@ -1,35 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE LEDGER OF VISIONS | Realm Pictures</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
 <body class="cover-page">
+    
     <nav class="top-nav">
         <div class="nav-left">
-            <img src="KinREALM.png" alt="Logo" class="brand-logo">
+            <img src="KinREALM.png" alt="KinREALM Logo" class="brand-logo">
         </div>
         <div class="nav-right">
             <div class="user-access">
-                <a href="#" class="access-link">SIGN IN</a>
+                <a href="#signin" class="access-link" id="login-trigger">SIGN IN</a>
                 <span class="divider">|</span>
-                <a href="#" id="register-trigger" class="access-link join-highlight">JOIN THE LEDGER</a>
+                <a href="#register" class="access-link join-highlight" id="register-trigger">JOIN THE LEDGER</a>
             </div>
         </div>
     </nav>
 
     <main class="hero-overlay">
         <div class="container">
-            <header>
-                <p class="branding">SOLOMON KIN RECORDS, LLC MEDIA GROUP PRESENTS</p>
+            <header class="hero-section">
+                <p class="branding-top">SOLOMON KIN RECORDS, LLC MEDIA GROUP PRESENTS</p>
                 <h1 class="main-title">THE LEDGER OF VISIONS</h1>
                 <p class="sub-title">REALM PICTURES: MOVIE TREATMENTS ARCHIVE [VOL 1]</p>
             </header>
 
             <section class="entry-point">
-                <div class="seal">
+                <div class="seal-embossed">
                     <p>EST. 2026</p>
                 </div>
                 <a href="01-deadhead.html" class="enter-btn">OPEN THE ARCHIVE</a>
             </section>
+
+            <footer class="index-footer">
+                <p>© 2026 NEHEMIAH MMM BROWN INC. | PHILADELPHIA MEDIA GROUP</p>
+            </footer>
         </div>
     </main>
 
-    <footer class="index-footer">
-        <p>© 2026 NEHEMIAH MMM BROWN INC. | PHILADELPHIA MEDIA GROUP</p>
-    </footer>
+    <div id="register-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <h2>ESTABLISH IDENTITY</h2>
+            <p>Sign up to comment and track your vision debts.</p>
+            <form class="auth-form">
+                <div class="input-group">
+                    <input type="text" placeholder="FIRST NAME (REQUIRED)" required>
+                    <input type="text" placeholder="LAST NAME">
+                </div>
+                <input type="email" placeholder="EMAIL ADDRESS" required>
+                <input type="password" placeholder="PASSWORD" required>
+                <button type="submit" class="submit-auth">CREATE ACCOUNT</button>
+            </form>
+            <div class="social-auth">
+                <p>OR CONNECT VIA</p>
+                <div class="social-icons">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-google"></i>
+                    <i class="fab fa-x-twitter"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('register-modal');
+        const regTrigger = document.getElementById('register-trigger');
+        const closeBtn = document.querySelector('.close-modal');
+
+        regTrigger.onclick = (e) => {
+            e.preventDefault();
+            modal.style.display = 'flex';
+        }
+        closeBtn.onclick = () => modal.style.display = 'none';
+        window.onclick = (event) => { if (event.target == modal) modal.style.display = 'none'; }
+    </script>
+
 </body>
+</html>
