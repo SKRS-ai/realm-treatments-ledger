@@ -1,72 +1,54 @@
-/* --- MASTER INDEX ALIGNMENT FIXES --- */
+/* --- INDEX SPECIFIC MASTER ALIGNMENT --- */
 
 .cover-page {
-    background: url('ledger-visions-background.png') no-repeat center center fixed;
-    background-size: cover;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    background: url('ledger-visions-background.png') no-repeat center center fixed !important;
+    background-size: cover !important;
+    height: 100vh;
+    overflow: hidden; /* Prevents stray scrollbars on index */
 }
 
-/* Fixes the Header Overlap */
+/* Fixes the Header Squashing */
 .top-nav {
+    padding: 0 50px;
+    height: 90px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 40px;
-    height: 90px;
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(10px);
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 2000;
 }
 
-.brand-logo {
-    height: 65px; /* Increased size for visibility */
-    width: auto;
-}
-
-/* Creates a readable "Zone" for the titles */
+/* The Hero Overlay centers the "Box" in the middle of the library */
 .hero-overlay {
-    flex: 1;
+    height: 100vh;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 100px; /* Offset for nav */
+    padding-top: 90px; /* Buffer for the fixed nav */
 }
 
-.cover-page .container {
-    background: rgba(0, 0, 0, 0.75);
-    border: 1px solid var(--accent);
-    padding: 50px;
-    max-width: 800px;
-    text-align: center;
-    box-shadow: 0 0 50px rgba(0,0,0,0.9);
-}
-
-/* Fixes the Auth Form stacking in screenshot */
+/* Fixed the Auth Form from overlapping in the modal */
 .auth-form {
     display: flex;
-    flex-direction: column; /* Stacks inputs vertically instead of side-by-side */
+    flex-direction: column;
     gap: 15px;
-    margin-top: 20px;
+    margin-top: 25px;
 }
 
-.auth-form input {
-    width: 100%;
-    padding: 12px;
-    background: #111;
-    border: 1px solid var(--border-color);
-    color: white;
+.input-group {
+    display: flex;
+    gap: 10px;
 }
 
-/* Position Footer at bottom */
-.index-footer {
-    padding: 20px;
-    text-align: center;
-    background: rgba(0,0,0,0.8);
-    font-size: 0.7rem;
-    letter-spacing: 2px;
+.input-group input {
+    flex: 1;
+}
+
+/* Growth Animations for Master Buttons */
+.enter-btn, .submit-auth, .join-highlight {
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.enter-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
 }
